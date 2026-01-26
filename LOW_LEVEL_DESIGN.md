@@ -6,7 +6,7 @@
 com.articurated.ordermanagement
 ├── config/
 │   ├── StateMachineConfig.java
-│   ├── AsyncConfig.java
+│   ├── AsyncConfigs.java
 │   ├── WebConfig.java
 │   └── DatabaseConfig.java
 ├── controller/
