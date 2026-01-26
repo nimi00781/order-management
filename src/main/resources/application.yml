@@ -1,0 +1,45 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: order-management
+  
+  datasource:
+    url: jdbc:postgresql://localhost:5432/articurated
+    username: ${DB_USERNAME:postgres}
+    password: ${DB_PASSWORD:postgres}
+    driver-class-name: org.postgresql.Driver
+  
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    show-sql: false
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
+  
+  flyway:
+    enabled: true
+    locations: classpath:db/migration
+    baseline-on-migrate: true
+
+payment:
+  gateway:
+    base-url: ${PAYMENT_GATEWAY_URL:http://localhost:8081}
+    api-key: ${PAYMENT_GATEWAY_API_KEY:test-key}
+  webhook:
+    secret: ${PAYMENT_WEBHOOK_SECRET:webhook-secret}
+
+email:
+  smtp:
+    host: ${SMTP_HOST:smtp.gmail.com}
+    port: ${SMTP_PORT:587}
+    username: ${SMTP_USERNAME:}
+    password: ${SMTP_PASSWORD:}
+
+logging:
+  level:
+    com.articurated.ordermanagement: INFO
+    org.springframework: WARN
